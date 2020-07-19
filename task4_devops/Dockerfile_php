@@ -24,6 +24,7 @@ RUN mkdir -p /var/run/sshd
 #RUN yum -y update
 RUN yum install -y java-11-openjdk.x86_64
 RUN yum install openssh-server sudo -y
+RUN yum install openssh-clients -y
 RUN ssh-keygen -A
 ADD ./sshd_config /etc/ssh/sshd_config
 RUN echo root:jenkins | chpasswd
