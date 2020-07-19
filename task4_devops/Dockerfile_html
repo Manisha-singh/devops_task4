@@ -28,7 +28,9 @@ RUN ssh-keygen -A
 ADD ./sshd_config /etc/ssh/sshd_config
 RUN echo root:jenkins | chpasswd
 CMD ["/usr/sbin/sshd","-D"] 
-
+RUN yum install sudo -y
+RUN echo -e "jenkins ALL=(ALL) NOPASSWD: ALL">>/etc/sudoers
+CMD ["java","-jar","/usr/lib/jenkins/jenkins.war"]
 
 COPY web-deployment.yml /root
 
