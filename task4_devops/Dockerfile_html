@@ -12,7 +12,7 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cl
 RUN yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 #RUN systemctl enable --now kubelet
                 
-
+RUN mkdir /root/jenkins
 RUN yum repolist
 RUN mkdir /root/.kube
 COPY ca.crt /root/
